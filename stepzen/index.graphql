@@ -1,0 +1,10 @@
+schema
+  @sdl(
+    files: [
+      "trackingitems/index.graphql"
+      "order/index.graphql"
+      "customer/index.graphql"
+    ]
+  ) {
+  query: Query
+}
