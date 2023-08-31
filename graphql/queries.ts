@@ -15,21 +15,14 @@ export const GET_CUSTOMERS = gql`
 export const GET_ORDERS = gql`
   query GetOrders {
     getOrders {
+      name
       value {
-        carrier
-        createdAt
-        trackingId
-        shippingCost
-        Address
-        City
-        Lng
-        Lat
         trackingItems {
-          customer_id
           customer {
             email
             name
           }
+          customer_id
           items {
             item_id
             name
@@ -37,6 +30,14 @@ export const GET_ORDERS = gql`
             quantity
           }
         }
+        trackingId
+        shippingCost
+        createdAt
+        carrier
+        Lng
+        Lat
+        City
+        Address
       }
     }
   }
