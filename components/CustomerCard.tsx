@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useTailwind } from "tailwind-rn";
 import { useNavigation } from "@react-navigation/native";
@@ -20,6 +20,7 @@ const CustomerCard = ({ userId, name, email }: Props) => {
   return (
     <TouchableOpacity
       onPress={() =>
+        orders.length > 0 &&
         navigation.navigate("MyModal", {
           name,
           userId,
@@ -60,5 +61,3 @@ const CustomerCard = ({ userId, name, email }: Props) => {
 };
 
 export default CustomerCard;
-
-const styles = StyleSheet.create({});

@@ -1,10 +1,9 @@
 import {
   ActivityIndicator,
-  SafeAreaView,
   ScrollView,
-  StyleSheet,
-  Text,
   View,
+  Text,
+  SafeAreaView,
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import { useTailwind } from "tailwind-rn";
@@ -35,34 +34,41 @@ const CustomersScreen = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
+      tabBarLabel: ({ focused, color }) => (
+        <Text style={{ color: focused ? "#59C1CC" : color }}>Customers</Text>
+      ),
     });
   }, []);
 
   return (
-    <ScrollView style={{ backgroundColor: "#59C1CC" }}>
-      <Image
-        source={{ uri: "https://links.papareact.com/3jc" }}
-        containerStyle={tw("w-full h-64")}
-        PlaceholderContent={<ActivityIndicator color="#FFFFFF" size="large" />}
-      />
+    <SafeAreaView>
+      <ScrollView style={{ backgroundColor: "#59C1CC" }}>
+        <Image
+          source={{ uri: "https://links.papareact.com/3jc" }}
+          containerStyle={tw("w-full h-64")}
+          PlaceholderContent={
+            <ActivityIndicator color="#FFFFFF" size="large" />
+          }
+        />
 
-      <Input
-        placeholder="Search by customer"
-        value={input}
-        onChangeText={(text) => setInput(text)}
-        containerStyle={tw("bg-white pt-5 pb-0 px-10")}
-      />
+        <Input
+          placeholder="Search by customer"
+          value={input}
+          onChangeText={(text) => setInput(text)}
+          containerStyle={tw("bg-white pt-5 pb-0 px-10")}
+        />
 
-      <View style={tw("pb-14")}>
-        {data?.getCustomers
-          ?.filter((customer: CustomerList) =>
-            customer.value.name.includes(input)
-          )
-          .map(({ name: ID, value: { email, name } }: CustomerResponse) => (
-            <CustomerCard key={ID} email={email} name={name} userId={ID} />
-          ))}
-      </View>
-    </ScrollView>
+        <View style={tw("pb-14")}>
+          {data?.getCustomers
+            ?.filter((customer: CustomerList) =>
+              customer.value.name.includes(input)
+            )
+            .map(({ name: ID, value: { email, name } }: CustomerResponse) => (
+              <CustomerCard key={ID} email={email} name={name} userId={ID} />
+            ))}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
