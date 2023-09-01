@@ -41,3 +41,7 @@ type Order = {
   Lat: number;
   trackingItems: TrackingItem;
 };
+
+declare module "react-native-dotenv" {
+  export const APP_ENV: string;
+}

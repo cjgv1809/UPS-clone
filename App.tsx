@@ -4,12 +4,12 @@ import utilities from "./tailwind.json";
 import { NavigationContainer } from "@react-navigation/native";
 import RootNavigator from "./navigator/RootNavigator";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { APP_ENV } from "react-native-dotenv";
 
 const client = new ApolloClient({
   uri: "https://caceres.stepzen.net/api/handy-anteater/graphql",
   headers: {
-    Authorization:
-      "apikey caceres::stepzen.io+1000::6bdfcf3d13253912d39421707aeef79dd43383fbb6d92df771f393a5fb4db253",
+    Authorization: `${APP_ENV}`,
   },
   cache: new InMemoryCache(),
 });
