@@ -21,7 +21,6 @@ type Props = {
 };
 
 const OrderCard = ({ item }: Props) => {
-  console.log("ITEM", item);
   const tw = useTailwind();
   const navigation = useNavigation<OrdersScreenNavigationProp>();
 

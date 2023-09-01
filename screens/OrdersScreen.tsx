@@ -53,7 +53,7 @@ const OrdersScreen = () => {
         <View>
           <Button
             color="pink"
-            titleStyle={{ color: "gray", fontWeight: "400" }}
+            titleStyle={{ color: "#000", fontWeight: "400" }}
             style={tw("py-2 px-5")}
             onPress={() => setAscending(!ascending)}
           >
@@ -64,9 +64,13 @@ const OrdersScreen = () => {
 
           <View style={tw("pb-14")}>
             {orders
-              ?.sort((a, b) =>
-                new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1
-              )
+              ?.sort((a, b) => {
+                if (ascending) {
+                  return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
+                } else {
+                  return new Date(a.createdAt) < new Date(b.createdAt) ? 1 : -1;
+                }
+              })
               .map((order) => (
                 <OrderCard key={order.trackingId} item={order} />
               ))}
